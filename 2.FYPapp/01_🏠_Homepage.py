@@ -17,7 +17,7 @@ nltk.download('stopwords')
 stemmer = nltk.SnowballStemmer("english")
 
 # Import logo
-logo = Image.open("/Users/Ren/fypvenv/2.FYPapp/Logo.png")
+logo = Image.open("Logo.png")
 
 # Page title and logo
 st.set_page_config(page_title='Grooming Detection', page_icon=logo)
@@ -31,7 +31,7 @@ st.markdown("#### is an ML model to detect grooming in textual and image files")
 st.write("If you’re worried about the content of your child's chats please upload the file and **we will take care of it**")
 
 # Receive a file as an input
-file = st.file_uploader("Upload a file", type=["csv", "txt"])
+file = st.file_uploader("Upload a file", type=["csv"])
 
 # Function to clean text
 def clean(text):
@@ -55,7 +55,7 @@ if file is not None:
         # Read CSV file
         df = pd.read_csv(file)
         # Assume the text data is in the 'text' column and labels are in 'Grooming Detection'
-        df['cleaned_text'] = df['text'].apply(clean)
+        df['cleaned_text'] = df['Text'].apply(clean)
     elif file.name.endswith('.txt'):
         # Read text file
         text = file.read().decode("utf-8")
@@ -64,7 +64,7 @@ if file is not None:
         df['Grooming Detection'] = [0]  # Dummy label for txt file
 
     # Log intermediate cleaned text for debugging
-    st.write("Cleaned text data:")
+    st.write(" **Preprocessed File:**")
     st.write(df['cleaned_text'])
 
     # Filter out empty cleaned_text
@@ -76,7 +76,7 @@ if file is not None:
         file_vectorized = vectorizer.fit_transform(df['cleaned_text'])
 
         # Extract labels for training
-        labels = df['Grooming Detection']
+        labels = df['Label']
 
         # Train the Gaussian Naive Bayes classifier
         clf = GaussianNB()
@@ -97,12 +97,12 @@ if file is not None:
         avg_grooming_detection = grooming_detection.mean()
 
         # Display overall insights
-        st.write("**Overall Insights**")
-        st.write("**Tone**")
+        st.write("#### **Overall Insights**")
+        st.write("##### **Sentiments**")
         st.write(f"Positive: {avg_sentiment['pos']:.2%}")
         st.write(f"Negative: {avg_sentiment['neg']:.2%}")
         st.write(f"Neutral: {avg_sentiment['neu']:.2%}")
-        st.write(f"**Existence of Explicit Content: {avg_grooming_detection:.2%} More Likely**")
+        st.write(f"##### **Grooming Detection likelihood {avg_grooming_detection:.2%}**")
 
         # Visualization
         fig, ax = plt.subplots(1, 2, figsize=(12, 6))
@@ -110,14 +110,14 @@ if file is not None:
         # Tone distribution
         tone_labels = ['Positive', 'Negative', 'Neutral']
         tone_values = [avg_sentiment['pos'], avg_sentiment['neg'], avg_sentiment['neu']]
-        ax[0].pie(tone_values, labels=tone_labels, autopct='%1.1f%%', colors=['#ff9999','#66b3ff','#99ff99'])
-        ax[0].set_title('Tone Distribution')
+        ax[0].pie(tone_values, labels=tone_labels, autopct='%1.1f%%', colors=['#ccd5ae','#ffe5ec','#e8e8e4'])#pos = green, neg = pink, neut = grey/blue
+        ax[0].set_title('Sentiments Distribution')
 
-        # Explicit content likelihood
-        ax[1].bar(['Explicit Content'], [avg_grooming_detection], color='orange')
+        # Grooming Detection likelihood
+        ax[1].bar(['Grooming Detection'], [avg_grooming_detection], color='#b392ac')
         ax[1].set_ylim(0, 1)
         ax[1].set_ylabel('Likelihood')
-        ax[1].set_title('Existence of Explicit Content')
+        ax[1].set_title('Grooming Detection Percentage')
 
         st.pyplot(fig)
     else:
