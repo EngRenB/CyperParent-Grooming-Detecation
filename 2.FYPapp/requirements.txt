@@ -1,5 +1,8 @@
-streamlit
-pandas
-re
-string
-nltk
+matplotlib==3.8.4
+nltk==3.8.1
+pandas==2.2.2
+Pillow==10.3.0
+scikit_learn==1.4.2
+streamlit==1.33.0
+vaderSentiment==3.3.2
+vaderSentiment==3.3.2
