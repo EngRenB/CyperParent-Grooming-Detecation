@@ -2,10 +2,4 @@ streamlit
 pandas
 re
 string
-Image
 nltk
-stopwords
-GaussianNB
-TfidfVectorizer
-SentimentIntensityAnalyzer
-matplotlib.pyplot
