@@ -9,6 +9,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.feature_extraction.text import TfidfVectorizer
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 # Download stopwords
 nltk.download('stopwords')
@@ -16,8 +17,11 @@ nltk.download('stopwords')
 # Initialize the stemmer
 stemmer = nltk.SnowballStemmer("english")
 
+#image path
+logo = Path("2.FYPapp") / "logo.png"
+
 # Import logo
-logo = Image.open("Logo.png")
+logo = Image.open(logo)
 
 # Page title and logo
 st.set_page_config(page_title='Grooming Detection', page_icon=logo)
