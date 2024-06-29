@@ -18,10 +18,10 @@ nltk.download('stopwords')
 stemmer = nltk.SnowballStemmer("english")
 
 #image path
-logo = Path("2.FYPapp") / "logo.png"
+logoPic = Path("2.FYPapp") / "Logo.png"
 
 # Import logo
-logo = Image.open("Logo")
+logo = Image.open("logoPic")
 
 # Page title and logo
 st.set_page_config(page_title='Grooming Detection', page_icon=logo)
