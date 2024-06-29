@@ -15,7 +15,7 @@ c2 = st.container(border=False)
 #subtitle of the first section which is about prevention and education
 c1.markdown("### Prevention")
 #picture var
-pic1 = Image.open(r"/Users/Ren/fypvenv/2.FYPapp/protection.png")
+pic1 = Image.open(r"protection.png")
 #display the image 
 c1.image(pic1, width=300)
 c1.write("**Grooming Takes Time.** Abusers do not just walk up to kids and say, “I want to touch your private parts” because they know the kid will probably say “No!” They want to abuse kids, but they don’t want to scare the kid away too soon, and they don’t want to get caught, so they build invisible “traps,” kind of like spider webs, in the hope that the kid won’t notice until they’ve already been caught. Lots of kids have good background knowledge of prey animals from watching animal shows on TV. I often ask if they can think of an animal who sets up traps. This help them make connections that help build their understanding about grooming.")
@@ -44,7 +44,7 @@ c1.write("---")
 #subtitle of the second section which is about after the even has happened
 c2.markdown("### Aftermath")
 #picture var
-pic2 = Image.open(r"/Users/Ren/fypvenv/2.FYPapp/aftermath.png")
+pic2 = Image.open(r"aftermath.png")
 #display the image 
 c2.image(pic2, width=225)
 #content
