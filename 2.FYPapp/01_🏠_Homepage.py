@@ -21,7 +21,7 @@ stemmer = nltk.SnowballStemmer("english")
 logo = Path("2.FYPapp") / "logo.png"
 
 # Import logo
-logo = Image.open(logo)
+logo = Image.open("logo")
 
 # Page title and logo
 st.set_page_config(page_title='Grooming Detection', page_icon=logo)
