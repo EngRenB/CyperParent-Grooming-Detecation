@@ -21,7 +21,7 @@ dir = path.Path(__file__).abspath()
 sys.path.append(dir.parent.parent)
 
 # load model
-path_to_model = './models/final_model.pkl'
+path_to_model = './mount/src/cyperparent-grooming-detecation/logoPic'
 
 
 with open(path_to_model, 'rb') as file:
